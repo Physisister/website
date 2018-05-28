@@ -7,6 +7,10 @@ class ArticlesController < ApplicationController
   def new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def create
     @article = Article.new(article_params)
 
@@ -15,6 +19,17 @@ class ArticlesController < ApplicationController
     else
       flash.now[:notice] = "Every blog needs a title and some text"
       render 'new'
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      flash.now[:notice] = "Every blog needs a title and some text"
+      render 'edit'
     end
   end
 
