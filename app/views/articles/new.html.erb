@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <%= form_with scope: :article, url: articles_path, local: true do |form| %>
   <p>
     <%= form.label :title %><br>
@@ -12,4 +16,6 @@
   <p>
     <%= form.submit %>
   </p>
+
+  <%= link_to 'Back', articles_path %>
 <% end %>

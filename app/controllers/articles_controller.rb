@@ -10,8 +10,13 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    @article.save
-    redirect_to @article
+    if @article.save
+      flash[:success] = "Your article has been saved"
+      redirect_to @article
+    else
+      flash.now[:notice] = "Every blog needs a title and some text"
+      render 'new'
+    end
   end
 
   def show
