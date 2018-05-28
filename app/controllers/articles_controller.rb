@@ -11,7 +11,6 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      flash[:success] = "Your article has been saved"
       redirect_to @article
     else
       flash.now[:notice] = "Every blog needs a title and some text"
