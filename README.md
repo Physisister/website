@@ -1,7 +1,7 @@
 # Physisister Website
 [![Maintainability](https://api.codeclimate.com/v1/badges/9351176a12d6f8025854/maintainability)](https://codeclimate.com/github/Physisister/website/maintainability)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/9351176a12d6f8025854/test_coverage)](https://codeclimate.com/github/Physisister/website/test_coverage)
+[![TestCoverage](https://api.codeclimate.com/v1/badges/9351176a12d6f8025854/test_coverage)](https://codeclimate.com/github/Physisister/website/test_coverage)
 
 ## Tech Stack
 
