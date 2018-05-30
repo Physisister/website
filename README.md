@@ -1,24 +1,46 @@
-# README
+# Physisister Website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tech Stack
 
-Things you may want to cover:
+#### Written in
+* Ruby 2.5.0
+* HTML
+* CSS
 
-* Ruby version
+#### Testing
+* Rspec - testing framework
+* SimpleCov - coverage
 
-* System dependencies
+#### Frameworks
+* Ruby on Rails
 
-* Configuration
+## Getting started
 
-* Database creation
+You can find the app on [Heroku](https://physisister.herokuapp.com/)
 
-* Database initialization
+Alternatively:
+1. Clone the repository
+2. Setup the databases:
+```bash
+> bundle install
+> rails db:create
+> rails db:migrate
+```
+3. Start the server
+```bash
+> rails server
+```
 
-* How to run the test suite
+## Running the tests
 
-* Services (job queues, cache servers, search engines, etc.)
+Simply run:
+```bash
+> rspec
+```
 
-* Deployment instructions
-
-* ...
+#### Code coverage:
+In the test report you should get a value for the coverage. To get a more detailed analysis of the coverage:
+```bash
+> cd coverage
+> open index.html
+```
