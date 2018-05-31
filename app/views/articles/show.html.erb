@@ -1,8 +1,8 @@
-<h1><%= @article.title %></h1>
+<h2><%= @article.title %></h2>
 
 <p><%= @article.text %></p>
 
-<p>By <%= User.find(@article.user_id).email %></p>
+<h4><em>By <%= User.find(@article.user_id).email %></em></h4>
 
 <%= render 'comments/comment' %>
 
