@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Deleting an article", type: :feature do
-  scenario "Can add a photo with a description" do
+  scenario "Can delete an article" do
     sign_up
     add_article
     click_link "Back"
