@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Editing an article", type: :feature do
   scenario "Can see the edited article on the show page" do
+    sign_up
     add_article
     edit_article
     expect(page).to have_content("Changed title")
@@ -11,6 +12,7 @@ RSpec.feature "Editing an article", type: :feature do
   end
 
   scenario "Can see the edited article on the index page" do
+    sign_up
     add_article
     edit_article
     click_link "Back"
@@ -19,6 +21,7 @@ RSpec.feature "Editing an article", type: :feature do
   end
 
   scenario "Will not let you submit an article without a title" do
+    sign_up
     add_article
     click_link "Edit"
     fill_in "article[title]", with: ""
@@ -28,6 +31,7 @@ RSpec.feature "Editing an article", type: :feature do
   end
 
   scenario "Will not let you submit an article without text" do
+    sign_up
     add_article
     click_link "Edit"
     fill_in "article[title]", with: "Changed title"

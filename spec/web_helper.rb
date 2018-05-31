@@ -1,5 +1,5 @@
 def add_article
-  visit "/articles"
+  click_link "Blog"
   click_link "New article"
   fill_in "article[title]", with: "Example title"
   fill_in "article[text]", with: "Example text"
@@ -11,4 +11,12 @@ def edit_article
   fill_in "article[title]", with: "Changed title"
   fill_in "article[text]", with: "Changed text"
   click_button "Update Article"
+end
+
+def sign_up
+  visit "/users/sign_up"
+  fill_in "user[email]", with: "example@example.com"
+  fill_in "user[password]", with: "examplepassword"
+  fill_in "user[password_confirmation]", with: "examplepassword"
+  click_button "Sign up"
 end
