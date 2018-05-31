@@ -1,0 +1,9 @@
+<% @article.timesort_comments.each_with_index do |comment, i| %>
+  <div id="<%="comment_#{i}"%>">
+    <%= comment.content %>
+    <%= User.find(comment.user_id).email %>
+  </div>
+<% end %>
+<div class="col-sm">
+  <%= render 'comments/form' %>
+</div>
