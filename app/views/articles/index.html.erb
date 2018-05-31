@@ -16,16 +16,14 @@
           <div>
             <%= User.find(article.user_id).email %>
           </div>
-          <div id="edit-button">
-            <%= button_to 'Edit', edit_article_path(article) %>
-          </div>
-          <div>
-            <% if current_user == article.user %>
-              <%= link_to 'Delete', article_path(article),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' } %>
-            <% end %>
-          </div>
         <% end %>
       </div>
+      <span>
+        <% if current_user == article.user %>
+          <%= button_to 'Edit', edit_article_path(article), :method => "get" %>
+          <%= button_to 'Delete', article_path(article),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </span>
   <% end %>

@@ -1,17 +1,8 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<h1><%= @article.title %></h1>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+<p><%= @article.text %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= User.find(@article.user_id).email %>
-</p>
+<p>By <%= User.find(@article.user_id).email %></p>
 
 <%= render 'comments/comment' %>
 
