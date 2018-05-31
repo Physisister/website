@@ -2,6 +2,11 @@
   <div id="<%="comment_#{i}"%>">
     <%= comment.content %>
     <%= User.find(comment.user_id).email %>
+    <% if current_user == comment.user %>
+      <%= link_to 'Delete', article_comment_path(@article, comment),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </div>
 <% end %>
 <div class="col-sm">

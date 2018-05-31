@@ -1,3 +1,11 @@
+def sign_up
+  visit "/users/sign_up"
+  fill_in "user[email]", with: "example@example.com"
+  fill_in "user[password]", with: "examplepassword"
+  fill_in "user[password_confirmation]", with: "examplepassword"
+  click_button "Sign up"
+end
+
 def add_article
   click_link "Blog"
   click_link "New article"
@@ -13,10 +21,7 @@ def edit_article
   click_button "Update Article"
 end
 
-def sign_up
-  visit "/users/sign_up"
-  fill_in "user[email]", with: "example@example.com"
-  fill_in "user[password]", with: "examplepassword"
-  fill_in "user[password_confirmation]", with: "examplepassword"
-  click_button "Sign up"
+def add_comment
+  fill_in "comment[content]", with: "Example comment"
+  click_button "New Comment"
 end
