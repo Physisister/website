@@ -18,6 +18,17 @@ RSpec.feature "Adding an article", type: :feature do
     expect(page).to have_content("Example text")
   end
 
+  scenario "Can click on it to show it" do
+    sign_up
+    add_article
+    click_link "Back"
+    click_link "Example title"
+    expect(page).to have_content("Example title")
+    expect(page).to have_content("Example text")
+    expect(page).to have_content "Back"
+    expect(page).to have_content "Edit"
+  end
+
   scenario "Will not let you add an article without a title" do
     sign_up
     visit "/articles"
