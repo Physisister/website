@@ -20,6 +20,15 @@ RSpec.feature "Editing an article", type: :feature do
     expect(page).to have_content("Changed text")
   end
 
+  scenario "Can click on the edit button from the index page" do
+    sign_up
+    add_article
+    edit_article
+    click_link "Back"
+    click_button "Edit"
+    expect(page).to have_content("Edit")
+  end
+
   scenario "Will not let you submit an article without a title" do
     sign_up
     add_article
