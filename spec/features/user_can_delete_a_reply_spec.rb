@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Deleting a reply", type: :feature do
-  scenario "Can delete a reply" do
+  before(:each) do
     sign_up
     add_article
     add_comment
@@ -9,6 +9,8 @@ RSpec.feature "Deleting a reply", type: :feature do
     within(find("div#reply_0")) do
       click_link "Delete"
     end
+  end
+  scenario "Can delete a reply" do
     expect(page).not_to have_content("Example reply")
   end
 end

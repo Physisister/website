@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "Navigation", type: :feature do
+  before(:each) do
+    sign_up
+  end
   scenario "Can visit the Blog from the homepage" do
     visit "/"
     click_link "Blog"
@@ -12,7 +15,6 @@ RSpec.feature "Navigation", type: :feature do
     expect(page).to have_current_path("/home/index")
   end
   scenario "Can click on an article to show it" do
-    sign_up
     add_article
     click_link "Back"
     click_link "Example title"
@@ -22,7 +24,6 @@ RSpec.feature "Navigation", type: :feature do
     expect(page).to have_content "Edit"
   end
   scenario "Can click on the edit button from the index page" do
-    sign_up
     add_article
     click_link "Back"
     click_button "Edit"

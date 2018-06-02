@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature "Adding an article", type: :feature do
-  scenario "Can see it on the show page" do
+  before(:each) do
     sign_up
+  end
+  scenario "Can see it on the show page" do
     add_article
     expect(page).to have_content("Example title")
     expect(page).to have_content("Example text")
@@ -11,7 +13,6 @@ RSpec.feature "Adding an article", type: :feature do
   end
 
   scenario "Can see it on the index page" do
-    sign_up
     add_article
     click_link "Back"
     expect(page).to have_content("Example title")
@@ -19,7 +20,6 @@ RSpec.feature "Adding an article", type: :feature do
   end
 
   scenario "Will not let you add an article without a title" do
-    sign_up
     visit "/articles"
     click_link "New article"
     fill_in "article[text]", with: "Example text"
@@ -28,7 +28,6 @@ RSpec.feature "Adding an article", type: :feature do
   end
 
   scenario "Will not let you add an article without text" do
-    sign_up
     visit "/articles"
     click_link "New article"
     fill_in "article[title]", with: "Example title"
