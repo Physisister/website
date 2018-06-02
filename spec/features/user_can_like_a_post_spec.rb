@@ -23,7 +23,7 @@ RSpec.feature "Liking an article", type: :feature do
     click_button "Unlike"
     expect(page).to have_content("0 Likes")
   end
-  scenario "Can unlike and see 0 likes on the index page" do
+  scenario "Can unlike and see 0 likes on the index page" dod
     click_button "Like"
     click_button "Unlike"
     click_link "Back"
