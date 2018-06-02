@@ -7,8 +7,25 @@
           method: :delete,
           data: { confirm: 'Are you sure?' } %>
     <% end %>
+    <% comment.replies.each_with_index do |reply, i| %>
+      <div id="<%="reply_#{i}"%>" class="reply">
+        <%= reply.content %>
+        <%= User.find(reply.user_id).email %>
+        <% if current_user == reply.user %>
+          <%= link_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="reply-form">
+      <%=form_with(model: [comment.article, comment, comment.replies.build], local: true) do |f|%>
+        <%= f.text_area :content, :maxlength => 140 %>
+        <%= f.submit "New Reply" %>
+      <% end %>
+    </div>
+
   </div>
 <% end %>
-<div class="col-sm">
-  <%= render 'comments/form' %>
-</div>
+
+<%= render 'comments/form' %>

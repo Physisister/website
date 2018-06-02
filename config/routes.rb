@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+
   devise_for :users
   get 'home/index'
 
   resources :articles do
-    resources :comments
+    resources :comments do
+      resources :replies
+    end
     resources :likes
   end
 
