@@ -25,3 +25,8 @@ def add_comment
   fill_in "comment[content]", with: "Example comment"
   click_button "New Comment"
 end
+
+def add_reply
+  fill_in "reply[content]", with: "Example reply"
+  click_button "New Reply"
+end

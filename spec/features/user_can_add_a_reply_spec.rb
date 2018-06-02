@@ -5,8 +5,7 @@ RSpec.feature "Adding a reply", type: :feature do
     sign_up
     add_article
     add_comment
-    fill_in "reply[content]", with: "Example reply"
-    click_button "New Reply"
+    add_reply
     expect(page).to have_content("Example reply")
   end
 end
