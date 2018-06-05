@@ -1,7 +1,6 @@
 <% @article.timesort_comments.each_with_index do |comment, i| %>
   <div id="<%="comment_#{i}"%>">
-    <%= comment.content %>
-    <%= User.find(comment.user_id).email %>
+    <p> <%= comment.content %> - <%= User.find(comment.user_id).username %> </p>
     <% if current_user == comment.user %>
       <%= link_to 'Delete', article_comment_path(@article, comment),
           method: :delete,
@@ -9,8 +8,7 @@
     <% end %>
     <% comment.replies.each_with_index do |reply, i| %>
       <div id="<%="reply_#{i}"%>" class="reply">
-        <%= reply.content %>
-        <%= User.find(reply.user_id).email %>
+        <p> <%= reply.content %> - <%= User.find(reply.user_id).username %> </p>
         <% if current_user == reply.user %>
           <%= link_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
               method: :delete,

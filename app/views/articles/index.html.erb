@@ -14,7 +14,7 @@
             <p><%= article.text[0...100] %>...</p>
           </div>
           <div>
-            <h4><em> By <%= User.find(article.user_id).email %></em></h4>
+            <h4><em> By <%= User.find(article.user_id).username %></em></h4>
           </div>
           <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         <% end %>

@@ -2,7 +2,7 @@
 
 <p><%= @article.text %></p>
 
-<h4><em>By <%= User.find(@article.user_id).email %></em></h4>
+<h4><em>By <%= User.find(@article.user_id).username %></em></h4>
 
 <% like = @article.likes.find { |like| like.user_id == current_user.id} %>
 <% if like %>
