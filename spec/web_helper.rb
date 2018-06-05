@@ -1,5 +1,6 @@
 def sign_up
   visit "/users/sign_up"
+  fill_in "user[username]", with: "example_username"
   fill_in "user[email]", with: "example@example.com"
   fill_in "user[password]", with: "examplepassword"
   fill_in "user[password_confirmation]", with: "examplepassword"

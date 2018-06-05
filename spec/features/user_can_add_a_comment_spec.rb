@@ -8,6 +8,6 @@ RSpec.feature "Adding a comment", type: :feature do
   end
   scenario "Can add a comment, which shows an email" do
     expect(page).to have_content("Example comment")
-    expect(page).to have_content("example@example.com")
+    expect(page).to have_content("example_username")
   end
 end
