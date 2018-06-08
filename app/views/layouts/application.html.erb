@@ -94,30 +94,6 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-
-    <header>
-      <div class="container">
-        <h1 class="logo">Physisister</h1>
-
-      </div>
-
-      <nav>
-        <ul>
-          <li><%= link_to 'Home', controller: 'home' %></li>
-          <li><%= link_to 'Blog', controller: 'articles' %></li>
-          <li><p>
-                <% if user_signed_in? %>
-                  Logged in as <strong><%= current_user.username %></strong>.
-                  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-                <% else %>
-                  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-                  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-                <% end %>
-          </p></li>
-        </ul>
-      </nav>
-    </header>
     <%= yield %>
   </body>
 </html>

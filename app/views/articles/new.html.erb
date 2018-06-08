@@ -1,3 +1,4 @@
+<%= render 'home/navbar' %>
 <%= form_with scope: :article, url: articles_path, local: true do |form| %>
   <p>
     <%= form.text_field :title %>

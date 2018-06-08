@@ -1,0 +1,27 @@
+<header>
+  <div class="container">
+    <h1 class="logo">Physisister</h1>
+
+  </div>
+
+  <nav>
+    <ul>
+      <li><%= link_to 'Home', controller: 'home' %></li>
+      <li><%= link_to 'Blog', controller: 'articles' %></li>
+      <li>
+        <% if user_signed_in? %>
+          <%= link_to 'Profile', controller: 'home' %>
+          <ul>
+            <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+          </ul>
+        <% else %>
+          <ul>
+            <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+            <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+          </ul>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</header>

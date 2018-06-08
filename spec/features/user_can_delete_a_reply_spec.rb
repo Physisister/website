@@ -7,7 +7,7 @@ RSpec.feature "Deleting a reply", type: :feature do
     add_comment
     add_reply
     within(find("div#reply_0")) do
-      click_link "Delete"
+      click_button "Delete"
     end
   end
   scenario "Can delete a reply" do
