@@ -4,12 +4,12 @@ class LikesController < ApplicationController
 
   def create
     @article.likes.create(user_id: current_user.id) if !already_liked?
-    redirect_to article_path(@article)
+    redirect_to URI(request.referer).path
   end
 
   def destroy
     @like.destroy if already_liked?
-    redirect_to article_path(@article)
+    redirect_to URI(request.referer).path
   end
 
   private

@@ -10,38 +10,83 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
-    
+
     <style>
+      body {
+        margin: 0;
+      }
       .article a:link, a:visited, a:hover {
         text-decoration: none;
         color: black;
       }
-      a:active {
+      .article a:active {
         text-decoration: none;
         color: blue;
       }
-      ul {
+      .list-group ul {
+        margin: 0;
         padding: 0;
-        list-style-type: none;
+        list-style: none;
       }
       .reply {
         padding-left: 20px;
+      }
+      .container {
+        width: 80%;
+        margin: 0 auto;
+      }
+      .profile-nav {
+        text-align: right;
+        padding-right: 10px;
+      }
+      header {
+        background: #476C9B;
+      }
+      header::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+      .logo {
+        float: left;
+        padding-top: 10px;
+      }
+      nav {
+        float: right;
+      }
+      nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      nav li {
+        display: inline-block;
+        margin-left: 70px;
+        padding-top: 25px;
+        position: relative;
+      }
+      nav a {
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      nav a::before {
+        content: '';
+        display: block;
+        height: 5px;
+        background-color: black;
+
+        position: absolute;
+        top: 0;
+        width: 0%;
+        transition: all ease-in-out 200ms;
+      }
+      nav a:hover::before {
+        width: 100%;
       }
     </style>
   </head>
 
   <body>
-
-    <p class="navbar-text pull-right">
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-      <% end %>
-    </p>
 
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
@@ -49,6 +94,30 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+
+    <header>
+      <div class="container">
+        <h1 class="logo">Physisister</h1>
+
+      </div>
+
+      <nav>
+        <ul>
+          <li><%= link_to 'Home', controller: 'home' %></li>
+          <li><%= link_to 'Blog', controller: 'articles' %></li>
+          <li><p>
+                <% if user_signed_in? %>
+                  Logged in as <strong><%= current_user.username %></strong>.
+                  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                <% else %>
+                  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+                  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                <% end %>
+          </p></li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

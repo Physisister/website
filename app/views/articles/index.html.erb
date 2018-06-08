@@ -1,6 +1,4 @@
-<%= link_to 'Home', controller: 'home' %>
-
-<%= link_to 'New article', new_article_path %>
+<h3><%= link_to 'New article', new_article_path %></h3>
 <ul class="list-group">
 
   <% @articles.each_with_index do |article, i| %>
@@ -20,6 +18,12 @@
         <% end %>
       </div>
       <span>
+        <% like = article.likes.find { |like| like.user_id == current_user.id} %>
+        <% if like %>
+          <%= button_to 'Unlike', article_like_path(article, like), method: :delete %>
+        <% else %>
+          <%= button_to 'Like', article_likes_path(article), method: :post %>
+        <% end %>
         <% if current_user == article.user %>
           <%= button_to 'Edit', edit_article_path(article), :method => "get" %>
           <%= button_to 'Delete', article_path(article),

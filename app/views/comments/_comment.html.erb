@@ -2,7 +2,7 @@
   <div id="<%="comment_#{i}"%>">
     <p> <%= comment.content %> - <%= User.find(comment.user_id).username %> </p>
     <% if current_user == comment.user %>
-      <%= link_to 'Delete', article_comment_path(@article, comment),
+      <%= button_to 'Delete', article_comment_path(@article, comment),
           method: :delete,
           data: { confirm: 'Are you sure?' } %>
     <% end %>
@@ -10,7 +10,7 @@
       <div id="<%="reply_#{i}"%>" class="reply">
         <p> <%= reply.content %> - <%= User.find(reply.user_id).username %> </p>
         <% if current_user == reply.user %>
-          <%= link_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
+          <%= button_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
         <% end %>
@@ -25,5 +25,3 @@
 
   </div>
 <% end %>
-
-<%= render 'comments/form' %>

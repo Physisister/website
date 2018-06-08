@@ -12,7 +12,6 @@
 <% end %>
 
 <p><%= @article.likes.count %> <%= (@article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-
 <%= render 'comments/comment' %>
 
 <%= link_to 'Edit', edit_article_path(@article) %>
