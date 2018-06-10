@@ -10,7 +10,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Quicksand|Roboto+Slab" rel="stylesheet">
     <style>
       body {
         margin: 0;
@@ -38,25 +38,30 @@
       .reply {
         padding-left: 20px;
       }
-      .container {
-        width: 80%;
-        margin: 0 auto;
-      }
       .profile-nav {
         text-align: right;
         padding-right: 10px;
       }
       header {
-        background: #476C9B;
+        background-color: white;
+      }
+      #physisister-title-div {
+        padding: 160px;
+        background: url("./nebula.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        text-align: center;
+      }
+      #physisister-title {
+        color: white;
+        font-size: 100px;
+        /* font-family: 'Playfair Display', serif; */
+        font-family: 'Roboto Slab', serif;
       }
       header::after {
         content: '';
         display: table;
         clear: both;
-      }
-      .logo {
-        float: left;
-        padding-top: 10px;
       }
       nav {
         float: right;
@@ -71,12 +76,14 @@
         margin-left: 20px;
         margin-right: 20px;
         padding-top: 25px;
+        padding-bottom: 25px;
         position: relative;
         z-index: 1000;
       }
       nav a {
         text-decoration: none;
         text-transform: uppercase;
+        font-family: 'Quicksand', sans-serif;
       }
       nav a::before {
         content: '';
@@ -94,7 +101,7 @@
       }
       ul.sub-menu {
         position: absolute;
-        background-color: #476C9B;
+        background-color: white;
         margin-left: -20px;
         padding-top: -25px;
         padding-bottom: 10px;
