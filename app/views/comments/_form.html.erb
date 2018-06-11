@@ -1,6 +1,8 @@
 <div class="comment">
   <%=form_with(model: [@article, @article.comments.build], local: true) do |f|%>
     <%= f.text_area :content, :maxlength => 140 %>
-    <%= f.submit "New Comment" %>
+    <%= f.submit "New Comment",
+    class: "btn btn-primary",
+    type: "submit" %>
   <% end %>
 </div>

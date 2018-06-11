@@ -26,7 +26,7 @@ RSpec.feature "Navigation", type: :feature do
   scenario "Can click on the edit button from the index page" do
     add_article
     click_link "Back"
-    click_button "Edit"
+    click_link "Edit"
     expect(page).to have_content("Edit")
   end
 end

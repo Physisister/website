@@ -26,7 +26,11 @@
         text-decoration: none;
         color: black;
       }
-      .article a:active {
+      .comment-form a:link, .comment-form a:visited {
+        text-decoration: none;
+        color: black;
+      }
+      .comment-form a:hover, .comment-form a:active {
         text-decoration: none;
         color: blue;
       }
@@ -128,5 +132,16 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
+
+    <script>
+    function myFunction() {
+      var x = document.getElementById("reply-form");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+    }
+</script>
   </body>
 </html>

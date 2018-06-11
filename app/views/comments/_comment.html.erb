@@ -2,7 +2,7 @@
   <div id="<%="comment_#{i}"%>">
     <p> <%= comment.content %> - <%= User.find(comment.user_id).username %> </p>
     <% if current_user == comment.user %>
-      <%= button_to 'Delete', article_comment_path(@article, comment),
+      <%= link_to 'Delete', article_comment_path(@article, comment),
           method: :delete,
           data: { confirm: 'Are you sure?' } %>
     <% end %>
@@ -10,16 +10,19 @@
       <div id="<%="reply_#{i}"%>" class="reply">
         <p> <%= reply.content %> - <%= User.find(reply.user_id).username %> </p>
         <% if current_user == reply.user %>
-          <%= button_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
+          <%= link_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
         <% end %>
       </div>
     <% end %>
-    <div class="reply-form">
+    <p id="demo" onclick="myFunction()">Reply</p>
+    <div id="reply-form" style="display:none;">
       <%=form_with(model: [comment.article, comment, comment.replies.build], local: true) do |f|%>
         <%= f.text_area :content, :maxlength => 140 %>
-        <%= f.submit "New Reply" %>
+        <%= f.submit "New Reply",
+        class: "btn btn-primary",
+        type: "submit" %>
       <% end %>
     </div>
 
