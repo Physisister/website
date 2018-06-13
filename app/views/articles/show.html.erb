@@ -16,7 +16,9 @@
       <% end %>
     </div>
   </div>
-
+  <div class="like-counter">
+    <p><%= @article.likes.count %> <%= (@article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  </div>
   <div class="like-button">
     <% like = @article.likes.find { |like| like.user_id == current_user.id} %>
     <% if like %>
@@ -31,8 +33,6 @@
       class: "btn btn-primary" %>
     <% end %>
   </div>
-  <div class="like-counter">
-    <p><%= @article.likes.count %> <%= (@article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
   <div class="comment-form">
     <%= render 'comments/comment' %>
   </div>

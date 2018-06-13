@@ -1,32 +1,40 @@
-<% @article.timesort_comments.each_with_index do |comment, i| %>
-  <div id="<%="comment_#{i}"%>">
-    <p> <%= comment.content %> - <%= User.find(comment.user_id).username %> </p>
-    <% if current_user == comment.user %>
-      <%= link_to 'Delete', article_comment_path(@article, comment),
-          method: :delete,
-          data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <% comment.replies.each_with_index do |reply, i| %>
-      <div id="<%="reply_#{i}"%>" class="reply">
-        <p> <%= reply.content %> - <%= User.find(reply.user_id).username %> </p>
-        <% if current_user == reply.user %>
-          <%= link_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+<div class="container">
+  <div class="row">
+    <% @article.timesort_comments.each_with_index do |comment, i| %>
+      <div class="col-md-12">
+        <div id="<%="comment_#{i}"%>" class="comment">
+          <h5 style="color: #007bff;"> <%= User.find(comment.user_id).username %> </h5>
+          <h5> <%= comment.content %> </h5>
+          <% if current_user == comment.user %>
+            <%= link_to 'Delete', article_comment_path(@article, comment),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+        <% comment.replies.each_with_index do |reply, i| %>
+          <div id="<%="reply_#{i}"%>" class="reply">
+            <h5 style="color: #007bff;"> <%= User.find(reply.user_id).username %> </h5>
+            <h5> <%= reply.content %> </h5>
+            <% if current_user == reply.user %>
+              <%= link_to 'Delete', article_comment_reply_path(comment.article, comment, reply),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
         <% end %>
+        <p class="reply-link" onclick="<%="myFunction(#{i})"%>">Reply</p>
+        <div id="<%="reply_form_#{i}"%>" class="reply-form" style="display:none;">
+          <%=form_with(model: [comment.article, comment, comment.replies.build], local: true) do |f|%>
+            <%= f.text_area :content, :maxlength => 140 %>
+            <%= f.submit "New Reply",
+            class: "btn btn-primary",
+            type: "submit" %>
+          <% end %>
+        </div>
+
       </div>
     <% end %>
-    <p class="reply-link" onclick="<%="myFunction(#{i})"%>">Reply</p>
-    <div id="<%="reply_form_#{i}"%>" style="display:none;">
-      <%=form_with(model: [comment.article, comment, comment.replies.build], local: true) do |f|%>
-        <%= f.text_area :content, :maxlength => 140 %>
-        <%= f.submit "New Reply",
-        class: "btn btn-primary",
-        type: "submit" %>
-      <% end %>
-    </div>
 
+    <%= render 'comments/form' %>
   </div>
-<% end %>
-
-<%= render 'comments/form' %>
+</div>
