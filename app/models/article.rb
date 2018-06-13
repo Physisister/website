@@ -8,4 +8,8 @@ class Article < ApplicationRecord
   def timesort_comments
     self.comments.sort_by { |comment| comment.created_at }
   end
+
+  def self.timesort_articles
+    self.all.sort_by { |post| post.created_at }.reverse
+  end
 end

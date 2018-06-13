@@ -9,7 +9,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <% @articles.each_with_index do |article, i| %>
+    <% @articles.timesort_articles.each_with_index do |article, i| %>
       <div class="col-md-12">
         <div id="<%="article_#{i}"%>" class="article" style="text-decoration:none;">
           <%= link_to article_path(article) do %>

@@ -9,4 +9,11 @@ RSpec.describe Article, type: :model do
       expect(article.timesort_comments[0].content).to eq "test"
     end
   end
+  describe "#timesort_articles" do
+    it "returns a sorted array of articles" do
+      article = Article.create(title: "test", text: "test" user_id: 1)
+      article = Article.create(title: "test2", text: "test2" user_id: 1)
+      expect(article.timesort_comments[0].content).to eq "test"
+    end
+  end
 end
