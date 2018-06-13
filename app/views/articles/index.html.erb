@@ -1,41 +1,48 @@
 <%= render 'home/navbar' %>
-<h3><%= link_to 'New article', new_article_path %></h3>
-<ul class="list-group">
-
-  <% @articles.each_with_index do |article, i| %>
-    <li class="list-group-item">
-      <div id="<%="article_#{i}"%>" class="article" style="text-decoration:none;">
-        <%= link_to article_path(article) do %>
-          <div>
-            <strong><%= article.title %></strong>
-          </div>
-          <div>
-            <p><%= article.text[0...100] %>...</p>
-          </div>
-          <div>
-            <h4><em> By <%= User.find(article.user_id).username %></em></h4>
-          </div>
-          <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-        <% end %>
+<div id="new-article-div">
+  <h3><%= button_to 'New article', new_article_path,
+  method: "get",
+  type: "button",
+  class: "btn btn-primary",
+  id: "new-article-button"
+  %></h3>
+</div>
+<div class="container">
+  <div class="row">
+    <% @articles.each_with_index do |article, i| %>
+      <div class="col-md-12">
+        <div id="<%="article_#{i}"%>" class="article" style="text-decoration:none;">
+          <%= link_to article_path(article) do %>
+            <div>
+              <h2><strong><%= article.title %></strong></h2>
+            </div>
+            <div>
+              <h4> By <%= User.find(article.user_id).username %></h4>
+            </div>
+            <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+          <% end %>
+        </div>
+        <span>
+          <% like = article.likes.find { |like| like.user_id == current_user.id} %>
+          <% if like %>
+            <%= button_to 'Unlike', article_like_path(article, like),
+            method: :delete,
+            type: "button",
+            class: "btn btn-primary" %>
+          <% else %>
+            <%= button_to 'Like', article_likes_path(article),
+            method: :post,
+            type: "button",
+            class: "btn btn-primary" %>
+          <% end %>
+          <% if current_user == article.user %>
+            <%= link_to 'Edit', edit_article_path(article) %>
+            <%= link_to 'Delete', article_path(article),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </span>
       </div>
-      <span>
-        <% like = article.likes.find { |like| like.user_id == current_user.id} %>
-        <% if like %>
-          <%= button_to 'Unlike', article_like_path(article, like),
-          method: :delete,
-          type: "button",
-          class: "btn btn-primary" %>
-        <% else %>
-          <%= button_to 'Like', article_likes_path(article),
-          method: :post,
-          type: "button",
-          class: "btn btn-primary" %>
-        <% end %>
-        <% if current_user == article.user %>
-          <%= link_to 'Edit', edit_article_path(article) %>
-          <%= link_to 'Delete', article_path(article),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </span>
-  <% end %>
+    <% end %>
+  </div>
+</div>
