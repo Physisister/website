@@ -47,7 +47,6 @@
       }
       .comment {
         display: inline-block;
-        padding: 10px;
       }
       .like-button {
         padding-bottom: 10px;
@@ -188,7 +187,7 @@
 
     <script>
     function myFunction(number) {
-      var name = "reply_form_" + number.toString()
+      var name = "replies_for_" + number.toString()
       var x = document.getElementById(name);
       if (x.style.display === "none") {
           x.style.display = "block";
