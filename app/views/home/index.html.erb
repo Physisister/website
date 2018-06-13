@@ -5,9 +5,37 @@
 </div>
 
 <div id="description-div">
-  <h3 id="description-title"> Discover the world of physics </h3>
+  <h2 id="description-title"><strong> Discover the world of physics </strong></h2>
   <div id="description-para">
     <p>Whether you're studying physics at school, at university or even just curious about the subject, this is a website for you.</p>
     <p>You can supplement your revision with GCSE and A level resources, learn about areas of physics that interest you the most, communicate with other girls studying physics and much more.</p>
-  </div
+  </div>
+</div>
+<div id="description-div">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" style="background-color: rgba(219, 77, 82, 1);">School Revision Tools</button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" style="background-color: rgba(255, 143, 95, 1);">Physisister Forum</button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" style="background-color: rgba(255, 222, 95, 1);">Women in Physics</button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" style="background-color: rgba(94, 214, 126, 1);">Physics Articles</button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" style="background-color: rgba(77, 157, 219, 1);">Physics on the Web</button>
+      </div>
+      <div class="col-md-6">
+        <%= button_to "Join the Community", new_user_registration_path,
+          class: "btn btn-primary",
+          style: "background-color: rgba(187, 110, 235, 1);",
+          type: "button"
+          %>
+      </div>
+    </div>
+  </div>
 </div>
