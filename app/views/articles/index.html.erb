@@ -12,41 +12,43 @@
     <% @articles.timesort_articles.each_with_index do |article, i| %>
       <div class="col-md-12">
         <div id="<%="article_#{i}"%>" class="article" style="text-decoration:none;">
-          <%= link_to article_path(article) do %>
-            <div>
-              <h2><strong><%= article.title %></strong></h2>
-            </div>
-            <div>
-              <h4> By <%= User.find(article.user_id).username %></h4>
-            </div>
-            <div class="shortened-text">
-              <p><%= simple_format article.text[0..200] + '...' %></p>
-            </div>
-            <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-          <% end %>
+          <div class="article-body">
+            <%= link_to article_path(article) do %>
+              <div>
+                <h2><strong><%= article.title %></strong></h2>
+              </div>
+              <div>
+                <h4> By <%= User.find(article.user_id).username %></h4>
+              </div>
+              <div class="shortened-text">
+                <p><%= simple_format article.text[0..200] + '...' %></p>
+              </div>
+              <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            <% end %>
+          </div>
+          <div class="article-reactions">
+            <% like = article.likes.find { |like| like.user_id == current_user.id} %>
+            <% if like %>
+              <%= button_to 'Unlike', article_like_path(article, like),
+              method: :delete,
+              type: "button",
+              class: "btn btn-primary" %>
+            <% else %>
+              <%= button_to 'Like', article_likes_path(article),
+              method: :post,
+              type: "button",
+              class: "btn btn-primary" %>
+            <% end %>
+            <% if current_user == article.user %>
+              <%= link_to 'Edit', edit_article_path(article),
+              style: "font-size: 20px;" %>
+              <%= link_to 'Delete', article_path(article),
+                      method: :delete,
+                      style: "font-size: 20px;",
+                      data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
         </div>
-        <span>
-          <% like = article.likes.find { |like| like.user_id == current_user.id} %>
-          <% if like %>
-            <%= button_to 'Unlike', article_like_path(article, like),
-            method: :delete,
-            type: "button",
-            class: "btn btn-primary" %>
-          <% else %>
-            <%= button_to 'Like', article_likes_path(article),
-            method: :post,
-            type: "button",
-            class: "btn btn-primary" %>
-          <% end %>
-          <% if current_user == article.user %>
-            <%= link_to 'Edit', edit_article_path(article),
-            style: "font-size: 20px;" %>
-            <%= link_to 'Delete', article_path(article),
-                    method: :delete,
-                    style: "font-size: 20px;",
-                    data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </span>
       </div>
     <% end %>
   </div>
