@@ -9,7 +9,7 @@ end
 
 def add_article
   click_link "Blog"
-  click_link "New article"
+  click_button "New article"
   fill_in "article[title]", with: "Example title"
   fill_in "article[text]", with: "Example text"
   click_button "Save Article"

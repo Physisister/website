@@ -21,7 +21,7 @@ RSpec.feature "Adding an article", type: :feature do
 
   scenario "Will not let you add an article without a title" do
     visit "/articles"
-    click_link "New article"
+    click_button "New article"
     fill_in "article[text]", with: "Example text"
     click_button "Save Article"
     expect(page).to have_content("Every blog needs a title and some text")
@@ -29,7 +29,7 @@ RSpec.feature "Adding an article", type: :feature do
 
   scenario "Will not let you add an article without text" do
     visit "/articles"
-    click_link "New article"
+    click_button "New article"
     fill_in "article[title]", with: "Example title"
     click_button "Save Article"
     expect(page).to have_content("Every blog needs a title and some text")
