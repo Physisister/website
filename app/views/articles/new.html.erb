@@ -1,17 +1,23 @@
 <%= render 'home/navbar' %>
-<%= form_with scope: :article, url: articles_path, local: true do |form| %>
-  <p>
-    <%= form.text_field :title %>
-  </p>
+<div class="container">
+  <%= form_with scope: :article, url: articles_path, local: true do |form| %>
+    <div class="form-group">
+      <%= form.text_field :title, class: "form-control",
+      placeholder: 'Title' %>
+    </div>
 
-  <p>
-    <%= form.text_area :text, class: 'textarea', :maxlength => 100000 %>
-  </p>
+    <div class="form-group">
+      <%= form.text_area :text,
+      rows: "20",
+      placeholder: 'Content',
+      :maxlength => 100000,
+      class: "form-control" %>
+    </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+    <p>
+      <%= form.submit 'Save article', class: "btn btn-primary"%>
+    </p>
 
-<% end %>
-
-<%= link_to 'Back', articles_path %>
+  <% end %>
+  <%= link_to 'Back', articles_path %>
+</div>
