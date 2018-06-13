@@ -1,8 +1,8 @@
 <header>
   <nav>
     <ul>
-      <li><%= link_to 'Home', controller: 'home' %></li>
-      <li><%= link_to 'Blog', controller: 'articles' %></li>
+      <li><%= link_to 'Home', home_index_path %></li>
+      <li><%= link_to 'Blog', articles_path %></li>
       <li><%= link_to 'About us', home_about_us_path %></li>
       <li>
         <% if user_signed_in? %>
