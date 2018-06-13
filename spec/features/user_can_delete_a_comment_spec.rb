@@ -5,7 +5,7 @@ RSpec.feature "Deleting a comment", type: :feature do
     sign_up
     add_article
     add_comment
-    click_button "Delete"
+    click_link "Delete"
   end
   scenario "Can delete a comment" do
     expect(page).not_to have_content("Example comment")

@@ -120,6 +120,12 @@
       nav li:hover .sub-menu {
         opacity: 1;
       }
+      .reply-link {
+        cursor: pointer;
+      }
+      .reply-link:hover, .reply-link:active  {
+        color: blue;
+      }
     </style>
   </head>
 
@@ -134,8 +140,9 @@
     <%= yield %>
 
     <script>
-    function myFunction() {
-      var x = document.getElementById("reply-form");
+    function myFunction(number) {
+      var name = "reply_form_" + number.toString()
+      var x = document.getElementById(name);
       if (x.style.display === "none") {
           x.style.display = "block";
       } else {

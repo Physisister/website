@@ -16,8 +16,8 @@
         <% end %>
       </div>
     <% end %>
-    <p id="demo" onclick="myFunction()">Reply</p>
-    <div id="reply-form" style="display:none;">
+    <p class="reply-link" onclick="<%="myFunction(#{i})"%>">Reply</p>
+    <div id="<%="reply_form_#{i}"%>" style="display:none;">
       <%=form_with(model: [comment.article, comment, comment.replies.build], local: true) do |f|%>
         <%= f.text_area :content, :maxlength => 140 %>
         <%= f.submit "New Reply",

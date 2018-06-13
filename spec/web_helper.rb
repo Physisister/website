@@ -28,6 +28,7 @@ def add_comment
 end
 
 def add_reply
+  find('.reply-link', :text => 'Reply').click
   fill_in "reply[content]", with: "Example reply"
   click_button "New Reply"
 end
