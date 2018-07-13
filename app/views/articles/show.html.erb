@@ -24,12 +24,14 @@
       <%= button_to 'Unlike', article_like_path(@article, like),
       method: :delete,
       type: "button",
-      class: "btn btn-primary" %>
+      class: "btn btn-primary",
+      id: "like-button" %>
     <% else %>
       <%= button_to 'Like', article_likes_path(@article),
       method: :post,
       type: "button",
-      class: "btn btn-primary" %>
+      class: "btn btn-primary",
+      id: "like-button" %>
     <% end %>
   </div>
   <%= render 'comments/comment' %>

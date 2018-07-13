@@ -28,23 +28,43 @@
           <div class="article-reactions">
             <% like = article.likes.find { |like| like.user_id == current_user.id} %>
             <% if like %>
-              <%= button_to 'Unlike', article_like_path(article, like),
-              method: :delete,
-              type: "button",
-              class: "btn btn-primary" %>
+              <div class="blog-button">
+                <%= button_to 'Unlike', article_like_path(article, like),
+                method: :delete,
+                type: "button",
+                style: "display:inline-block;",
+                class: "btn btn-primary",
+                id: "action-button" %>
+              </div>
             <% else %>
-              <%= button_to 'Like', article_likes_path(article),
-              method: :post,
-              type: "button",
-              class: "btn btn-primary" %>
+              <div class="blog-button">
+                <%= button_to 'Like', article_likes_path(article),
+                method: :post,
+                style: "display:inline-block;",
+                type: "button",
+                class: "btn btn-primary",
+                id: "action-button" %>
+              </div>
             <% end %>
             <% if current_user == article.user %>
-              <%= link_to 'Edit', edit_article_path(article),
-              style: "font-size: 20px;" %>
-              <%= link_to 'Delete', article_path(article),
+              <div class="blog-button">
+                <%= button_to 'Edit', edit_article_path(article),
+                style: "display:inline-block;",
+                type: "button",
+                class: "btn btn-primary",
+                method: :post,
+                id: "action-button"
+                 %>
+             </div>
+             <div class="blog-button">
+              <%= button_to 'Delete', article_path(article),
                       method: :delete,
-                      style: "font-size: 20px;",
+                      style: "display:inline-block;",
+                      type: "button",
+                      class: "btn btn-primary",
+                      id: "action-button",
                       data: { confirm: 'Are you sure?' } %>
+              </div>
             <% end %>
           </div>
         </div>
@@ -52,3 +72,5 @@
     <% end %>
   </div>
 </div>
+
+<%= render 'home/contact_us' %>
