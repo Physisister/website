@@ -9,44 +9,5 @@
     <p>You can supplement your revision with GCSE and A level resources, learn about areas of physics that interest you the most, communicate with other girls studying physics and much more.</p>
   </div>
 </div>
-<div id="button-div">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <button type="button" class="btn btn-primary" style="background-color: rgba(219, 77, 82, 1);">School Revision Tools</button>
-      </div>
-      <div class="col-md-6">
-        <%= button_to "About us", home_about_us_path,
-          method: "get",
-          class: "btn btn-primary",
-          style: "background-color: rgba(255, 143, 95, 1);",
-          type: "button"
-        %>
-      </div>
-      <div class="col-md-6">
-        <button type="button" class="btn btn-primary" style="background-color: rgba(255, 222, 95, 1);">Women in Physics</button>
-      </div>
-      <div class="col-md-6">
-        <%= button_to "Physics Articles", articles_path,
-          method: "get",
-          class: "btn btn-primary",
-          style: "background-color: rgba(94, 214, 126, 1);",
-          type: "button"
-        %>
-      </div>
-      <div class="col-md-6">
-        <button type="button" class="btn btn-primary" style="background-color: rgba(77, 157, 219, 1);">Physics on the Web</button>
-      </div>
-      <div class="col-md-6">
-        <%= button_to "Join the Community", new_user_registration_path,
-          method: "get",
-          class: "btn btn-primary",
-          style: "background-color: rgba(187, 110, 235, 1);",
-          type: "button"
-        %>
-      </div>
-    </div>
-  </div>
-</div>
 
 <%= render 'home/contact_us' %>
