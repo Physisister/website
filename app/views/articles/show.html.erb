@@ -12,12 +12,24 @@
       <p><%= simple_format @article.text %></p>
 
       <% if current_user == @article.user %>
-        <%= link_to 'Edit', edit_article_path(@article),
-        style: "font-size: 24px;" %>
-        <%= link_to 'Delete', article_path(@article),
+        <div class="blog-button">
+          <%= button_to 'Edit', edit_article_path(@article),
+          style: "display:inline-block;",
+          type: "button",
+          class: "btn btn-primary",
+          method: :get,
+          id: "action-button"
+           %>
+       </div>
+       <div class="blog-button">
+        <%= button_to 'Delete', article_path(@article),
                 method: :delete,
-                style: "font-size: 24px;",
+                style: "display:inline-block;",
+                type: "button",
+                class: "btn btn-primary",
+                id: "action-button",
                 data: { confirm: 'Are you sure?' } %>
+        </div>
       <% end %>
     </div>
   </div>

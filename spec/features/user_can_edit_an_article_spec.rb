@@ -9,19 +9,17 @@ RSpec.feature "Editing an article", type: :feature do
     edit_article
     expect(page).to have_content("Changed title")
     expect(page).to have_content("Changed text")
-    expect(page).to have_content "Back"
-    expect(page).to have_content "Edit"
   end
 
   scenario "Can see the edited article on the index page" do
     edit_article
-    click_link "Back"
+    click_button "Back"
     expect(page).to have_content("Changed title")
     expect(page).to have_content("Changed text")
   end
 
   scenario "Will not let you submit an article without a title" do
-    click_link "Edit"
+    click_button "Edit"
     fill_in "article[title]", with: ""
     fill_in "article[text]", with: "Changed text"
     click_button "Update Article"
@@ -29,7 +27,7 @@ RSpec.feature "Editing an article", type: :feature do
   end
 
   scenario "Will not let you submit an article without text" do
-    click_link "Edit"
+    click_button "Edit"
     fill_in "article[title]", with: "Changed title"
     fill_in "article[text]", with: ""
     click_button "Update Article"

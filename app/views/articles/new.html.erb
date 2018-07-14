@@ -1,3 +1,9 @@
+<%= button_to 'Back', articles_path,
+  method: :get,
+  type: "button",
+  class: "btn btn-primary",
+  id: "back-button" %>
+
 <div class="container">
   <%= form_with scope: :article, url: articles_path, local: true do |form| %>
     <div class="form-group">
@@ -18,5 +24,4 @@
     </p>
 
   <% end %>
-  <%= link_to 'Back', articles_path %>
 </div>

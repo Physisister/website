@@ -4,7 +4,7 @@ RSpec.feature "Deleting an article", type: :feature do
   before(:each) do
     sign_up
     add_article
-    click_link "Back"
+    click_button "Back"
     click_button "Delete"
   end
   scenario "Can delete an article" do

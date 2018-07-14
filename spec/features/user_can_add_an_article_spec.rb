@@ -8,13 +8,11 @@ RSpec.feature "Adding an article", type: :feature do
     add_article
     expect(page).to have_content("Example title")
     expect(page).to have_content("Example text")
-    expect(page).to have_content "Back"
-    expect(page).to have_content "Edit"
   end
 
   scenario "Can see it on the index page" do
     add_article
-    click_link "Back"
+    click_button "Back"
     expect(page).to have_content("Example title")
     expect(page).to have_content("Example text")
   end

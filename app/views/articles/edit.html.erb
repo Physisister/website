@@ -1,4 +1,9 @@
-<h1> Edit </h1>
+<%= button_to 'Back', articles_path,
+  method: :get,
+  type: "button",
+  class: "btn btn-primary",
+  id: "back-button" %>
+
 <div class="container">
   <%= form_with model: @article, local: true do |form| %>
 
@@ -18,5 +23,4 @@
     <%= form.submit 'Update Article', class: "btn btn-primary"%>
 
   <% end %>
-  <%= link_to 'Back', articles_path %>
 </div>

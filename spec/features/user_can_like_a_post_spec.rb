@@ -6,7 +6,7 @@ RSpec.feature "Liking an article", type: :feature do
     add_article
   end
   scenario "Can see 0 Likes on the show page" do
-    click_link "Back"
+    click_button "Back"
     expect(page).to have_content("0 Likes")
   end
   scenario "Can like and see 1 like" do
@@ -15,7 +15,7 @@ RSpec.feature "Liking an article", type: :feature do
   end
   scenario "Can like and see 1 like on the index page" do
     click_button "Like"
-    click_link "Back"
+    click_button "Back"
     expect(page).to have_content("1 Like")
   end
   scenario "Can unlike and see 0 likes" do
@@ -26,7 +26,7 @@ RSpec.feature "Liking an article", type: :feature do
   scenario "Can unlike and see 0 likes on the index page" do
     click_button "Like"
     click_button "Unlike"
-    click_link "Back"
+    click_button "Back"
     expect(page).to have_content("0 Likes")
   end
 end

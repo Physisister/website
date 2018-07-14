@@ -16,7 +16,7 @@ def add_article
 end
 
 def edit_article
-  click_link "Edit"
+  click_button "Edit"
   fill_in "article[title]", with: "Changed title"
   fill_in "article[text]", with: "Changed text"
   click_button "Update Article"
