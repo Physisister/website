@@ -1,3 +1,9 @@
+<%= button_to 'Back', articles_path,
+  method: :get,
+  type: "button",
+  class: "btn btn-primary",
+  id: "back-button" %>
+
 <div class="container">
   <div class="row">
     <div class="col-md-12" id="article-show">
@@ -25,16 +31,15 @@
       method: :delete,
       type: "button",
       class: "btn btn-primary",
-      id: "like-button" %>
+      id: "action-button" %>
     <% else %>
       <%= button_to 'Like', article_likes_path(@article),
       method: :post,
       type: "button",
       class: "btn btn-primary",
-      id: "like-button" %>
+      id: "action-button" %>
     <% end %>
   </div>
   <%= render 'comments/comment' %>
   <%= render 'comments/form' %>
-  <%= link_to 'Back', articles_path %>
 </div>
