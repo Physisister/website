@@ -1,4 +1,4 @@
-<div>
+<div style="padding-bottom: 100px;">
   <%=form_with(model: [@article, @article.comments.build], local: true) do |f|%>
     <%= f.text_area :content, :maxlength => 140 %>
     <%= f.submit "New Comment",

@@ -3,7 +3,9 @@
     <div class="col-md-12">
       <img class="profile-photo" src="http://georgedrayson.com/images/profile.jpg">
       <h1 style="padding-top: 20px;"> <%=current_user.username %> </h1>
-      <p> from <%=current_user.location %> </p>
+      <% if current_user.location %>
+        <p> from <%= current_user.location %> </p>
+      <% end %>
       <p> <%=current_user.bio %> </p>
     </div>
     <div class="col-md-12" style="padding-top: 20px; padding-bottom: 50px;">
