@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <img class="profile-photo" src="http://georgedrayson.com/images/profile.jpg">
+      <h1 style="padding-top: 20px;"> <%=current_user.username %> </h1>
+      <p> from <%=current_user.location %> </p>
+      <p> <%=current_user.bio %> </p>
+    </div>
+    <div class="col-md-12" style="padding-top: 20px; padding-bottom: 50px;">
+      <h1> Blogs: </h1>
+    </div>
+    <% current_user.articles.timesort_articles.each_with_index do |article, i| %>
+
+      <div class="col-md-12">
+        <div id="<%="article_#{i}"%>" class="article" style="text-decoration:none;">
+          <div class="article-body">
+            <%= link_to article_path(article) do %>
+              <div>
+                <h2><strong><%= markdown(article.title) %></strong></h2>
+              </div>
+              <div class="shortened-text">
+                <p><%= simple_format markdown(article.text[0..200]  + '...') %></p>
+              </div>
+              <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <p><%= article.comments.count %> <%= (article.comments.count) == 1 ? 'Comment' : 'Comments'%></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
