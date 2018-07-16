@@ -16,13 +16,13 @@
           <div class="article-body">
             <%= link_to article_path(article) do %>
               <div>
-                <h2><strong><%= article.title %></strong></h2>
+                <h2><strong><%= markdown(article.title) %></strong></h2>
               </div>
               <div>
                 <h4> By <%= User.find(article.user_id).username %></h4>
               </div>
               <div class="shortened-text">
-                <p><%= simple_format article.text[0..200] + '...' %></p>
+                <p><%= simple_format markdown(article.text[0..200]  + '...') %></p>
               </div>
               <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             <% end %>
