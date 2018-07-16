@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Deleting an article", type: :feature do
   before(:each) do
-    sign_up
+    create_user
+    sign_in
     add_article
     click_button "Back"
     click_button "Delete"

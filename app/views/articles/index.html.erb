@@ -1,10 +1,12 @@
 <div id="new-article-div">
-  <h3><%= button_to 'New article', new_article_path,
-  method: "get",
-  type: "button",
-  class: "btn btn-primary",
-  id: "new-article-button"
-  %></h3>
+  <% if current_user.write_access? %>
+    <h3><%= button_to 'New article', new_article_path,
+    method: "get",
+    type: "button",
+    class: "btn btn-primary",
+    id: "new-article-button"
+    %></h3>
+  <% end %>
 </div>
 <div class="container">
   <div class="row">

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Liking an article", type: :feature do
   before(:each) do
-    sign_up
+    create_user
+    sign_in
     add_article
   end
   scenario "Can see 0 Likes on the show page" do

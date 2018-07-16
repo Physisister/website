@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Navigation", type: :feature do
   before(:each) do
-    sign_up
+    create_user
+    sign_in
   end
   scenario "Can visit the Blog from the homepage" do
     visit "/"

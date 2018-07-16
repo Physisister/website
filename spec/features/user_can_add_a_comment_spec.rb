@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Adding a comment", type: :feature do
   before(:each) do
-    sign_up
+    create_user
+    sign_in
     add_article
     add_comment
   end

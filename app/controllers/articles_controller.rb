@@ -14,10 +14,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    if @article.save
+    if !current_user.write_access?
+      flash.now[:notice] = "You don't have permission to post articles"
+      render 'new'
+    elsif @article.save
       redirect_to @article
     else
-      flash.now[:notice] = "Every blog needs a title and some text"
       render 'new'
     end
   end
@@ -29,7 +31,6 @@ class ArticlesController < ApplicationController
     elsif @article.update(article_params)
       redirect_to @article
     else
-      flash.now[:notice] = "Every blog needs a title and some text"
       render 'edit'
     end
   end

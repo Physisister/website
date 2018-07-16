@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Editing an article", type: :feature do
   before(:each) do
-    sign_up
+    create_user
+    sign_in
     add_article
   end
   scenario "Can see the edited article on the show page" do
@@ -23,7 +24,8 @@ RSpec.feature "Editing an article", type: :feature do
     fill_in "article[title]", with: ""
     fill_in "article[text]", with: "Changed text"
     click_button "Update Article"
-    expect(page).to have_content("Every blog needs a title and some text")
+    visit '/articles'
+    expect(page).not_to have_content "Changed text"
   end
 
   scenario "Will not let you submit an article without text" do
@@ -31,6 +33,7 @@ RSpec.feature "Editing an article", type: :feature do
     fill_in "article[title]", with: "Changed title"
     fill_in "article[text]", with: ""
     click_button "Update Article"
-    expect(page).to have_content("Every blog needs a title and some text")
+    visit '/articles'
+    expect(page).not_to have_content "Changed title"
   end
 end

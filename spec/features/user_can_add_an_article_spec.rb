@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "Adding an article", type: :feature do
   before(:each) do
-    sign_up
+    create_user
+    sign_in
   end
   scenario "Can see it on the show page" do
     add_article
@@ -22,7 +23,7 @@ RSpec.feature "Adding an article", type: :feature do
     click_button "New article"
     fill_in "article[text]", with: "Example text"
     click_button "Save Article"
-    expect(page).to have_content("Every blog needs a title and some text")
+    expect(page).to have_current_path("/articles")
   end
 
   scenario "Will not let you add an article without text" do
@@ -30,6 +31,6 @@ RSpec.feature "Adding an article", type: :feature do
     click_button "New article"
     fill_in "article[title]", with: "Example title"
     click_button "Save Article"
-    expect(page).to have_content("Every blog needs a title and some text")
+    expect(page).to have_current_path("/articles")
   end
 end
