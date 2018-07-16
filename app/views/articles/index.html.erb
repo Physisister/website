@@ -25,6 +25,7 @@
                 <p><%= simple_format markdown(article.text[0..200]  + '...') %></p>
               </div>
               <p><%= article.likes.count %> <%= (article.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <p><%= article.comments.count %> <%= (article.comments.count) == 1 ? 'Comment' : 'Comments'%></p>
             <% end %>
           </div>
           <div class="article-reactions">
