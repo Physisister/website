@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :users, :only => [:show]
   get 'home/index'
   get 'home/about_us'
   get 'home/revision'
-  get 'home/profile'
   resources :articles do
     resources :comments do
       resources :replies

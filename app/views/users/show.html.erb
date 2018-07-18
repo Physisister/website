@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-md-12">
       <img class="profile-photo" src="http://georgedrayson.com/images/profile.jpg">
-      <h1 style="padding-top: 20px;"> <%=current_user.username %> </h1>
-      <% if current_user.location %>
-        <p> from <%= current_user.location %> </p>
+      <h1 style="padding-top: 20px;"> <%= @user.username %> </h1>
+      <% if @user.location %>
+        <p> from <%= @user.location %> </p>
       <% end %>
-      <p> Education level: <%=current_user.education_level %> </p>
-      <p> <%=current_user.bio %> </p>
+      <p> Education level: <%= @user.education_level %> </p>
+      <p> <%= @user.bio %> </p>
     </div>
     <div class="col-md-12" style="padding-top: 20px; padding-bottom: 50px;">
       <h1> Blogs: </h1>
     </div>
-    <% current_user.articles.timesort_articles.each_with_index do |article, i| %>
+    <% @user.articles.timesort_articles.each_with_index do |article, i| %>
 
       <div class="col-md-12">
         <div id="<%="article_#{i}"%>" class="article" style="text-decoration:none;">
