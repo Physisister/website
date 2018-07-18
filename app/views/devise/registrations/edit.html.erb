@@ -29,9 +29,15 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :education_level %><br />
-      <%= f.text_field :education_level, autofocus: true, autocomplete: "education_level",
-      :maxlength => 30, class: "form-control" %>
+      <p> Education level: </p>
+      <%= f.radio_button :education_level, 'GCSE student' %>
+      <%= f.label :education_level, 'GCSE student', :value => 'GCSE student' %><br>
+      <%= f.radio_button :education_level, 'A-Level student' %>
+      <%= f.label :education_level, 'A-Level student', :value => 'A-Level student' %><br>
+      <%= f.radio_button :education_level, 'University student' %>
+      <%= f.label :education_level, 'University student', :value => 'University student' %><br>
+      <%= f.radio_button :education_level, 'University graduate' %>
+      <%= f.label :education_level, 'University graduate', :value => 'University graduate' %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
