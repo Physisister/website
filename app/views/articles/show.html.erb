@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-12" id="article-show">
       <h1 class="article-title"><%= markdown(@article.title) %></h1>
-      <h2 class="article-title"><em>By <%= User.find(@article.user_id).username %></em></h2>
+      <h2 class="article-title"><em>By <%= link_to user_path(User.find(@article.user_id)) do %><%= User.find(@article.user_id).username %><% end %></em></h2>
       <p><%= simple_format markdown(@article.text) %></p>
 
       <% if current_user == @article.user %>

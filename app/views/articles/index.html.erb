@@ -18,9 +18,11 @@
               <div>
                 <h2><strong><%= markdown(article.title) %></strong></h2>
               </div>
-              <div>
-                <h4> By <%= User.find(article.user_id).username %></h4>
-              </div>
+            <% end %>
+          </div>
+          <h4 class="article-author"><em>By <%= link_to user_path(User.find(article.user_id)) do %><%= User.find(article.user_id).username %><% end %></em></h4>
+          <div class="article-body">
+            <%= link_to article_path(article) do %>
               <div class="shortened-text">
                 <p><%= simple_format markdown(article.text[0..200]  + '...') %></p>
               </div>
