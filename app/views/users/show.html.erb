@@ -6,7 +6,9 @@
       <% if @user.location %>
         <p> from <%= @user.location %> </p>
       <% end %>
-      <p> Education level: <%= @user.education_level %> </p>
+      <% if @user.education_level %>
+        <p> Education level: <%= @user.education_level %> </p>
+      <% end %>
       <p> <%= @user.bio %> </p>
     </div>
     <div class="col-md-12" style="padding-top: 20px; padding-bottom: 50px;">
